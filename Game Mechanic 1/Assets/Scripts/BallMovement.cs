@@ -44,7 +44,7 @@ public class BallMovement : MonoBehaviour {
             Vector3 projPos = m_cam.WorldToScreenPoint(m_transform.position);
             projPos.z = 0;
             m_direction = (projPos - Input.mousePosition).normalized;
-
+            
             Aim();
         }
         if (Input.GetMouseButtonUp(0))
