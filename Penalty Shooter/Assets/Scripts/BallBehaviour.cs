@@ -12,6 +12,7 @@ public class BallBehaviour : MonoBehaviour
     private bool ballMove;
     private float timeFail;
     public Transform SpawnPoint;
+    public ScoreManager score;
 
     private void Start()
     {
@@ -30,7 +31,8 @@ public class BallBehaviour : MonoBehaviour
 
     void OnMouseDrag()
     {
-            pullPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
+        pullPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
+        Aim();
     }
 
     void OnMouseUp()
@@ -70,7 +72,13 @@ public class BallBehaviour : MonoBehaviour
     {
         if(col.gameObject.tag == "Target")
         {
+            score.AddScore();
             Respawn();
         }
+    }
+
+    private void Aim()
+    {
+
     }
 }

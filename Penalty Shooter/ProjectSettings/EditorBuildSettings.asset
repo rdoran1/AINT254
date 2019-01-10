@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 67f3a602fcfda674db31bf4eeed0c917
+  - enabled: 1
+    path: Assets/Scenes/Penalty Shooter.unity
+    guid: 7d7d3c0e1a72e9b4c88471474cbd0754

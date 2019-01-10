@@ -3,16 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TargetManager : MonoBehaviour {
-
-    Vector3 initPos;
+    
     Vector3 newPos;
     public Transform targetSpawn;
-
-	// Use this for initialization
-	void Start ()
-    {
-        initPos = gameObject.transform.position;
-	}
 
     // Update is called once per frame
     private void OnCollisionEnter(Collision collision)
