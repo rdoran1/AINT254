@@ -15,23 +15,12 @@ public class BallBehaviour : MonoBehaviour
 
     private void Start()
     {
-        timeFail = 5;
         ballMove = false;
     }
 
     private void FixedUpdate()
     {
-        if (ballMove == true)
-        {
-            timeFail -= Time.deltaTime;
-            Debug.Log(timeFail);
-            if (timeFail < 0)
-            {
-                Destroy(Disc);
-                Respawn();
-                Start();
-            }
-        }
+        BallTime();
     }
 
     void OnMouseDown()
@@ -53,9 +42,35 @@ public class BallBehaviour : MonoBehaviour
         }
     }
 
+    void BallTime()
+    {
+        if (ballMove == false)
+        {
+            timeFail = 5;
+        }
+        if (ballMove == true)
+        {
+            timeFail -= Time.deltaTime;
+            Debug.Log(timeFail);
+            if (timeFail < 0)
+            {
+                Respawn();
+            }
+        }
+    }
+
     void Respawn()
     {
         Instantiate(Disc,SpawnPoint.transform.position,SpawnPoint.transform.rotation);
+        Destroy(Disc);
         Start();
+    }
+
+    private void OnCollisionEnter(Collision col)
+    {
+        if(col.gameObject.tag == "Target")
+        {
+            Respawn();
+        }
     }
 }
