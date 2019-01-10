@@ -12,9 +12,11 @@ public class BallMovement : MonoBehaviour {
     private Vector3 m_direction;
     private float m_gravity = 9.81f;
     private Rigidbody m_projRigBody;
+    private float m_mouseDownPos;
+    private float m_mouseUpPos;
 
 
-    public float force = 10;
+    public float force;
 
 	// Use this for initialization
 	void Start ()
@@ -45,6 +47,11 @@ public class BallMovement : MonoBehaviour {
             projPos.z = 0;
             m_direction = (projPos - Input.mousePosition).normalized;
 
+            OnMouseDown();
+            OnMouseUp();
+
+            force = m_mouseUpPos - m_mouseDownPos;
+
             Aim();
         }
         if (Input.GetMouseButtonUp(0))
@@ -56,6 +63,15 @@ public class BallMovement : MonoBehaviour {
                 m_dotArray[i].SetActive(false);
             }
         }
+    }
+
+    private void OnMouseDown()
+    {
+        m_mouseDownPos = m_cam.ScreenToWorldPoint(m_transform.position).y;
+    }
+    private void OnMouseUp()
+    {
+        m_mouseUpPos = m_cam.ScreenToWorldPoint(m_transform.position).y;
     }
 
     private void Aim()
